@@ -4,10 +4,7 @@ import com.leolee.model.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Hello world!
@@ -31,6 +28,18 @@ public class ServerApp
         // testApi 接口调用
         User user = new User();
         user.setName("feign");
+        return user;
+    }
+
+
+    @GetMapping("/user")
+    @ResponseBody
+    public User getUserById(String userId){
+        System.out.println("getUserById......");
+        // testApi 接口调用
+        User user = new User();
+        user.setId(userId);
+        user.setName("getUserById");
         return user;
     }
 
